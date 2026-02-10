@@ -1,0 +1,704 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+/* ===== CSS Variables (Matching Converter Theme) ===== */
+:root {
+    --bg-dark: #0a0a1a;
+    --card-bg: #12122a;
+    --card-hover: #1a1a3a;
+    --card-selected: #1e1e45;
+    --accent: #4cd964;
+    --accent-glow: rgba(76, 217, 100, 0.2);
+    --accent-cyan: #00d9ff;
+    --accent-purple: #7c3aed;
+    --text-primary: #ffffff;
+    --text-secondary: #6a6a8a;
+    --border: rgba(255, 255, 255, 0.08);
+    --positive: #4cd964;
+    --negative: #ff6b6b;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: var(--bg-dark);
+    min-height: 100vh;
+    color: var(--text-primary);
+}
+
+/* ===== App Wrapper & Navigation ===== */
+.app-wrapper {
+    min-height: 100vh;
+}
+
+.main-nav {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px 16px;
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.main-nav a {
+    padding: 10px 18px;
+    color: var(--text-secondary);
+    text-decoration: none;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 0.85rem;
+    transition: all 0.3s ease;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid transparent;
+}
+
+@media (min-width: 600px) {
+    .main-nav {
+        gap: 10px;
+        padding: 15px 20px;
+    }
+
+    .main-nav a {
+        padding: 12px 24px;
+        font-size: 0.95rem;
+    }
+}
+
+.main-nav a:hover {
+    color: var(--text-primary);
+    background: var(--card-hover);
+}
+
+.main-nav a.active {
+    color: white;
+    background: var(--card-selected);
+    border-color: var(--accent);
+    box-shadow: 0 0 20px var(--accent-glow);
+}
+
+/* ===== Container ===== */
+.container {
+    max-width: 480px;
+    margin: 0 auto;
+    padding: 20px;
+    animation: fadeIn 0.4s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ===== Header ===== */
+.header {
+    text-align: center;
+    padding: 25px 0 20px;
+}
+
+.header h1 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 15px;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.user-info span {
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+}
+
+.logout-btn,
+.edit-btn {
+    padding: 8px 16px;
+    background: var(--card-bg);
+    color: var(--text-primary);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 0.8rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    font-family: inherit;
+}
+
+.logout-btn:hover,
+.edit-btn:hover {
+    background: var(--card-hover);
+    transform: translateY(-2px);
+}
+
+.edit-btn {
+    border-color: var(--accent);
+    color: var(--accent);
+}
+
+/* ===== Balance Cards ===== */
+.balance-cards {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.balance-cards .card.balance {
+    grid-column: span 2;
+}
+
+@media (min-width: 600px) {
+    .balance-cards {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .balance-cards .card.balance {
+        grid-column: span 1;
+    }
+}
+
+.card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 18px 14px;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.card:hover {
+    background: var(--card-hover);
+    transform: translateY(-3px);
+}
+
+.card h3 {
+    color: var(--text-secondary);
+    font-size: 0.7rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 8px;
+}
+
+.card p {
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+
+.card.balance {
+    border-color: var(--accent);
+    box-shadow: 0 0 20px var(--accent-glow);
+}
+
+.positive {
+    color: var(--positive) !important;
+}
+
+.negative {
+    color: var(--negative) !important;
+}
+
+/* ===== Expense Chart ===== */
+.expense-chart-container {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 20px;
+    margin-bottom: 20px;
+    transition: all 0.3s ease;
+}
+
+.expense-chart-container:hover {
+    background: var(--card-hover);
+}
+
+.expense-chart-container h2 {
+    color: var(--text-primary);
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.expense-chart-container h2::before {
+    content: '📊';
+    font-size: 0.9rem;
+}
+
+.chart-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+}
+
+.donut-chart {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.chart-center-label {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.chart-total {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.chart-currency {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+.chart-empty-state {
+    text-align: center;
+    padding: 30px;
+    color: var(--text-secondary);
+}
+
+/* ===== Forms ===== */
+.add-transaction,
+.transaction-history {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.add-transaction h2,
+.transaction-history h2 {
+    color: var(--text-primary);
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.add-transaction h2::before {
+    content: '➕';
+    font-size: 0.9rem;
+}
+
+.transaction-history h2::before {
+    content: '📋';
+    font-size: 0.9rem;
+}
+
+.transaction-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.form-left {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.form-right {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    min-width: auto;
+}
+
+@media (min-width: 600px) {
+    .transaction-form {
+        flex-direction: row;
+    }
+
+    .form-right {
+        min-width: 130px;
+    }
+}
+
+input,
+select {
+    padding: 14px 16px;
+    background: var(--bg-dark);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    font-size: 0.95rem;
+    color: var(--text-primary);
+    transition: all 0.3s ease;
+    font-family: inherit;
+}
+
+input::placeholder {
+    color: var(--text-secondary);
+}
+
+input:focus,
+select:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 15px var(--accent-glow);
+}
+
+/* Hide number spinners */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type="number"] {
+    -moz-appearance: textfield;
+    appearance: textfield;
+}
+
+/* ===== Type Toggle ===== */
+.type-toggle {
+    display: flex;
+    gap: 6px;
+    background: var(--bg-dark);
+    padding: 4px;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+}
+
+.toggle-btn {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    padding: 10px 12px;
+    border: none;
+    border-radius: 10px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: inherit;
+    background: transparent;
+    color: var(--text-secondary);
+}
+
+.toggle-btn:hover:not(.active) {
+    background: var(--card-hover);
+    color: var(--text-primary);
+}
+
+.toggle-btn.income.active {
+    background: var(--positive);
+    color: white;
+}
+
+.toggle-btn.expense.active {
+    background: var(--negative);
+    color: white;
+}
+
+button[type="submit"] {
+    padding: 14px;
+    background: var(--accent);
+    color: #000;
+    border: none;
+    border-radius: 12px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: inherit;
+}
+
+button[type="submit"]:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px var(--accent-glow);
+}
+
+/* ===== Transaction History ===== */
+.transaction-history ul {
+    list-style: none;
+}
+
+.transaction-history li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 16px;
+    border-radius: 12px;
+    margin-bottom: 8px;
+    background: var(--bg-dark);
+    border: 1px solid var(--border);
+    transition: all 0.3s ease;
+}
+
+.transaction-history li:hover {
+    background: var(--card-hover);
+    transform: translateX(4px);
+}
+
+.transaction-history li.income {
+    border-left: 3px solid var(--positive);
+}
+
+.transaction-history li.expense {
+    border-left: 3px solid var(--negative);
+}
+
+.transaction-history li span:first-child {
+    color: var(--text-primary);
+    font-weight: 500;
+    font-size: 0.9rem;
+}
+
+.transaction-history li span:last-of-type {
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+.transaction-history li button {
+    background: rgba(255, 107, 107, 0.15);
+    color: var(--negative);
+    border: none;
+    width: 30px;
+    height: 30px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.transaction-history li button:hover {
+    background: var(--negative);
+    color: white;
+}
+
+.empty-state {
+    text-align: center;
+    color: var(--text-secondary);
+    padding: 30px;
+    font-size: 0.9rem;
+}
+
+/* ===== Messages ===== */
+.error-message {
+    background: rgba(255, 107, 107, 0.1);
+    color: var(--negative);
+    padding: 12px 14px;
+    border-radius: 10px;
+    margin-bottom: 12px;
+    border-left: 3px solid var(--negative);
+    font-size: 0.85rem;
+}
+
+.success-message {
+    background: rgba(76, 217, 100, 0.1);
+    color: var(--positive);
+    padding: 12px 14px;
+    border-radius: 10px;
+    margin-bottom: 12px;
+    border-left: 3px solid var(--positive);
+    font-size: 0.85rem;
+}
+
+/* ===== Auth Page ===== */
+.auth-container {
+    min-height: calc(100vh - 60px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.auth-box {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 35px 30px;
+    width: 100%;
+    max-width: 380px;
+    animation: fadeIn 0.5s ease;
+}
+
+.auth-title {
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 25px;
+    color: var(--text-primary);
+}
+
+.auth-tabs {
+    display: flex;
+    margin-bottom: 20px;
+    background: var(--bg-dark);
+    border-radius: 12px;
+    padding: 4px;
+}
+
+.auth-tab {
+    flex: 1;
+    padding: 12px;
+    border: none;
+    background: transparent;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-radius: 10px;
+    font-family: inherit;
+}
+
+.auth-tab.active {
+    background: var(--accent);
+    color: #000;
+}
+
+.auth-tab:hover:not(.active) {
+    color: var(--text-primary);
+}
+
+.auth-form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+/* ===== Modal ===== */
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    backdrop-filter: blur(8px);
+}
+
+.modal {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 30px;
+    width: 90%;
+    max-width: 380px;
+    animation: fadeIn 0.3s ease;
+}
+
+.modal h2 {
+    color: var(--text-primary);
+    margin-bottom: 20px;
+    text-align: center;
+    font-size: 1.2rem;
+}
+
+.modal p {
+    color: var(--text-secondary);
+    text-align: center;
+    margin-bottom: 20px;
+    line-height: 1.5;
+}
+
+.modal-buttons {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.modal-buttons button {
+    flex: 1;
+    padding: 12px;
+    border-radius: 10px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: inherit;
+}
+
+.cancel-btn {
+    background: var(--bg-dark) !important;
+    color: var(--text-primary) !important;
+    border: 1px solid var(--border) !important;
+}
+
+.cancel-btn:hover {
+    background: var(--card-hover) !important;
+}
+
+.delete-modal h2 {
+    color: var(--negative);
+}
+
+.delete-confirm-btn {
+    background: var(--negative) !important;
+    color: white !important;
+    border: none !important;
+}
+
+.danger-zone {
+    margin-top: 25px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+}
+
+.delete-account-btn {
+    width: 100%;
+    padding: 12px;
+    background: transparent;
+    color: var(--negative);
+    border: 1px solid rgba(255, 107, 107, 0.3);
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.delete-account-btn:hover {
+    background: rgba(255, 107, 107, 0.1);
+    border-color: var(--negative);
+}
+
+button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* ===== Responsive (Mobile-First already applied inline) =====
+   Base styles are optimized for mobile.
+   min-width breakpoints above scale up for tablets/desktops.
+*/

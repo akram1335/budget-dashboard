@@ -1,0 +1,234 @@
+/* Currency Converter Styles */
+
+:root {
+    --bg-dark: #0a0a1a;
+    --card-bg: #12122a;
+    --card-hover: #1a1a3a;
+    --card-selected: #1e1e45;
+    --keypad-bg: #1a1a3a;
+    --keypad-hover: #252550;
+    --accent: #4cd964;
+    --accent-glow: rgba(76, 217, 100, 0.2);
+    --text-primary: #ffffff;
+    --text-secondary: #6a6a8a;
+    --border: rgba(255, 255, 255, 0.08);
+    --chart-up: #4cd964;
+    --chart-down: #ff6b6b;
+}
+
+.converter-container {
+    width: 100%;
+    max-width: 440px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.converter-container h1 {
+    text-align: center;
+    color: var(--text-primary);
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 6px;
+}
+
+.converter-container .subtitle {
+    text-align: center;
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+    margin-bottom: 20px;
+}
+
+/* Currency Cards Grid */
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+.currency-card {
+    background: var(--card-bg);
+    border: 2px solid var(--border);
+    border-radius: 16px;
+    padding: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.currency-card:hover {
+    background: var(--card-hover);
+    transform: translateY(-2px);
+}
+
+.currency-card.selected {
+    background: var(--card-selected);
+    border-color: var(--accent);
+    box-shadow: 0 0 25px var(--accent-glow);
+}
+
+.card-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 8px;
+}
+
+.currency-flag {
+    font-size: 1.5rem;
+}
+
+.currency-code {
+    font-weight: 700;
+    color: var(--text-primary);
+    font-size: 1rem;
+}
+
+.currency-name {
+    color: var(--text-secondary);
+    font-size: 0.7rem;
+}
+
+.currency-value {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 8px;
+}
+
+.currency-card.selected .currency-value {
+    color: var(--accent);
+}
+
+.currency-rate {
+    font-size: 0.7rem;
+    color: var(--text-secondary);
+    margin-bottom: 10px;
+}
+
+/* Mini Chart */
+.mini-chart {
+    height: 35px;
+    width: 100%;
+}
+
+.mini-chart svg {
+    width: 100%;
+    height: 100%;
+}
+
+/* Input Section */
+.input-section {
+    background: var(--card-bg);
+    border-radius: 16px;
+    padding: 16px;
+    margin-bottom: 12px;
+    border: 1px solid var(--border);
+    scroll-margin-top: 80px;
+    /* Offset for sticky header */
+}
+
+.input-label {
+    color: var(--text-secondary);
+    font-size: 0.8rem;
+    margin-bottom: 8px;
+    display: block;
+}
+
+.amount-input {
+    width: 100%;
+    background: var(--bg-dark);
+    border: 2px solid var(--border);
+    border-radius: 10px;
+    padding: 14px 16px;
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    outline: none;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    font-family: inherit;
+}
+
+.amount-input:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 15px var(--accent-glow);
+}
+
+.amount-input::placeholder {
+    color: var(--text-secondary);
+    opacity: 0.5;
+}
+
+/* Keypad */
+.keypad {
+    background: var(--keypad-bg);
+    border-radius: 16px;
+    padding: 12px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+}
+
+.key {
+    background: transparent;
+    border: none;
+    color: var(--text-primary);
+    font-size: 1.2rem;
+    font-weight: 500;
+    padding: 14px;
+    min-height: 48px;
+    /* Touch-friendly minimum */
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.1s;
+    font-family: inherit;
+}
+
+.key:hover {
+    background: var(--keypad-hover);
+}
+
+.key:active {
+    transform: scale(0.95);
+}
+
+@media (min-width: 480px) {
+    .keypad {
+        padding: 16px;
+        gap: 10px;
+    }
+
+    .key {
+        font-size: 1.3rem;
+        padding: 16px;
+    }
+}
+
+.key.operator {
+    color: var(--accent);
+}
+
+.key.clear {
+    color: #ff6b6b;
+}
+
+.key.equals {
+    color: var(--accent);
+}
+
+.key.delete {
+    color: #ffa500;
+}
+
+/* Footer */
+.converter-container .footer {
+    text-align: center;
+    padding: 16px;
+    color: var(--text-secondary);
+    font-size: 0.75rem;
+}
+
+.converter-container .footer span {
+    color: var(--accent);
+}

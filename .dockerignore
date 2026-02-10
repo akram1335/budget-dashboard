@@ -1,0 +1,29 @@
+# Git
+.git
+.gitignore
+
+# Runtime data
+data/
+
+# Node (frontend has its own install step)
+frontend/node_modules
+
+# Python cache
+__pycache__/
+*.pyc
+
+# IDE / OS
+.vscode/
+.idea/
+.DS_Store
+
+# Documentation
+*.md
+LICENSE
+
+# Database files
+*.db
+
+# Docker
+docker-compose*.yml
+*.sh
