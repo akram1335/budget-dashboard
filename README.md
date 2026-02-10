@@ -26,6 +26,20 @@ docker push your-registry/budget-dashboard:latest
 - Expose port **8000**
 - Attach a **persistent volume** at `/data` (SQLite database + rate files)
 
+### Automated Deployment
+
+Use the included script to build, push, and sync to GitHub:
+
+```bash
+./deploy.sh "commit message"
+```
+
+Then simply restart the application in the Claw Cloud console.
+
+### 24/7 Availability
+
+Unlike some free tiers (e.g. Render/Heroku), **Claw Cloud does not put apps to sleep**. Your application runs 24/7 as long as you have credits. This ensures that scheduled tasks (like daily currency rate updates) always run on time.
+
 ## Project Structure
 
 ```
