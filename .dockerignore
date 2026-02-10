@@ -27,3 +27,4 @@ LICENSE
 # Docker
 docker-compose*.yml
 *.sh
+!entrypoint.sh
