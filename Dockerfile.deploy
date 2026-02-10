@@ -52,7 +52,7 @@ COPY --from=frontend-builder --chown=appuser:appgroup /frontend/dist ./static
 RUN mkdir -p /data && chown appuser:appgroup /data
 
 # Switch to non-root user
-USER appuser
+# USER appuser
 
 EXPOSE 8000
 

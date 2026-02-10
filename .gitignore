@@ -40,3 +40,4 @@ frontend/Dockerfile
 frontend/.dockerignore
 start.sh
 stop.sh
+deploy.sh
